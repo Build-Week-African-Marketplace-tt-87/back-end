@@ -74,13 +74,9 @@ Authentication Routes
 
 | Method | Endpoint | Token | Required |
 | -------------------------------------------------------------------------------- |
-| POST | api/auth/register | no | registers a new user. 
-                                  required: name, username, password, owner
-                                  returns: id, username and password |
+| POST | api/auth/register | no | registers a new user. required: name, username, password, owner. returns: id, username and password |
 | -------------------------------------------------------------------------- |
-| POST | api/auth/login | no |  Signs in user and returns a token.
-                                Required: username and password.
-                                Returns a token. |
+| POST | api/auth/login | no |  Signs in user and returns a token Required: username and password. Returns a token. |
 
 
 

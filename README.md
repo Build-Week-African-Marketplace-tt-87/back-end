@@ -14,20 +14,23 @@ Tables
 
 Users
 
-| data | type | required |
-| ----------------------------- |
-| id | integer | yes |
-| ----------------------------- |
-| name | string | yes |
-| ----------------------------- |
-| username | string | yes |
-| ----------------------------- |
-| password | string | yes |
-| ----------------------------- |
-| owner | boolean | yes |
+| data     | type    | required | 
+|----------|---------|----------|
+| id       | integer | yes      | 
+| name     | string  | yes      | 
+| username | string  | yes      |  
+| password | string  | yes      |
+| owner    | boolean | yes      |
 
 
 Items
+
+| data        | type       | required    | 
+|-------------|------------|-------------|
+| id          | integer    | yes         | 
+| item_name   | string     | yes         | 
+| category_id | string     | yes         |  
+
 
 | data | type | required |
 | ----------------------------- |

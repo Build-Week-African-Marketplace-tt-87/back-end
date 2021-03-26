@@ -9,10 +9,8 @@ bcryptjs, jsonwebtoken, jest, supertest
 Base url: 
 Restricted routes requiring a token are specified below.
 
-Tables 
 
-
-Users
+Users Table
 
 | data     | type    | required | 
 |----------|---------|----------|
@@ -23,7 +21,7 @@ Users
 | owner    | boolean | yes      |
 
 
-Items
+Items Table
 
 | data        | type       | required    | 
 |-------------|------------|-------------|
@@ -32,43 +30,26 @@ Items
 | category_id | string     | yes         |  
 
 
-| data | type | required |
-| ----------------------------- |
-| id | integer | yes |
-| ----------------------------- |
-| item_name | string | yes |
-| ----------------------------- |
-| category_id | string | yes |
+Owners_items Table 
 
-
-Owners_items
-
-| data | type | required |
-| ----------------------------- | 
-| id | integer | yes |
-| ----------------------------- |
-| owners_id | integer | yes |
-| ----------------------------- | 
-| item_id | integer | yes |
-| ----------------------------- |
-| quantity | integer | yes |
-| ----------------------------- |
-| description | text | yes |
-| ----------------------------- |
-| price | float | yes |
-| ----------------------------- |
-| location | string | yes |
+| data        | type       | required    | 
+|-------------|------------|-------------|
+| id          | integer    | yes         | 
+| owners_id   | integer    | yes         | 
+| item_id     | integer    | yes         | 
+| quantity    | integer    | yes         | 
+| description | text       | yes         | 
+| price       | float      | yes         | 
+| location    | string     | yes         |  
 
 
 
 Categories
 
-| data | type | required |
-| ----------------------------- |
-| id | integer | yes |
-| ----------------------------- |
-| category_name | string | yes |
-
+| data          | type         | required    | 
+|---------------|--------------|-------------|
+| id            | integer      | yes         | 
+| category_name | string       | yes         | 
 
 
 Endpoints

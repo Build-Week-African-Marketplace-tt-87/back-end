@@ -20,8 +20,8 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      connectionString: pgConnection,
-      ssl: { rejectUnauthorized: false },
+      // connectionString: pgConnection,
+      // ssl: { rejectUnauthorized: false },
       filename: './data/dev.db3'
     },
     migrations: { 

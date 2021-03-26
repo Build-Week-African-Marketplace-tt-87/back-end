@@ -1,24 +1,32 @@
-const db = require ('') // database location .db3
+const db = require ('../../data/AfricanMarket.db3') // database location .db3
 
-function find(){
-
+function find() {
+  return db("users as u")
+     
+      .select("*")
 }
 
-function findById(){
-
+function findById(id) {
+  return db('users')
+      .where({ id })
+      .first()
 }
 
-function findByUsername() {
-
+function findBy(username) {
+  return db('users')
+      .where({ username })
+      .first()
 }
 
-async function add(){
-
+async function add(newUser) {
+  const [id] = await db('users')
+      .insert(newUser)
+  return findById(id)
 }
 
 module.exports = {
   find,
-  findById,
-  findByUsername,
   add,
-}
+  findBy,
+  findById,
+};

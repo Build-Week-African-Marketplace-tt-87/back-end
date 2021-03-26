@@ -3,7 +3,7 @@ const cors = require("cors")
 const helmet = require('helmet')
 
 const authRouter = require('./auth/auth-routers')
-const howtoRouter = require('./howTo/howTo-routers')
+const africanMarketRouter = require('./africanMarket/africanMarket-routers')
 
 const server = express()
 
@@ -12,7 +12,7 @@ server.use(cors())
 server.use(express.json())
 
 server.use('/api/auth', authRouter)
-server.use('/api/users', howtoRouter)
+server.use('/api/AfricanMarket', africanMarketRouter)
 
 server.use("/", (req, res, next) => {
   res.status(200).json({

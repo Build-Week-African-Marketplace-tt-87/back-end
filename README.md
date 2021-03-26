@@ -6,7 +6,7 @@ bcryptjs, jsonwebtoken, jest, supertest
 
 # API Documentation
 
-Base url: https://build-week-how-to-tt102.herokuapp.com/  
+Base url: 
 Routes marked with *(restricted)* require Authorizaton header set with JWT
 
 ## Endpoints

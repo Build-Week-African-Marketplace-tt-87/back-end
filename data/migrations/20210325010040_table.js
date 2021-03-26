@@ -1,53 +1,47 @@
-
-exports.up = async function(knex) {
-  await knex.schema.createTable('owners', (table)=> {
-    table.increment('id')
-    table.string('name').notNull().unique()
-    table.string('username').notNull().unique()
-    table.string('password').notNull()
-  })  
-}
-
 exports.up = async function(knex) {
   await knex.schema.createTable('users', (table) => {
     table.increments('id')
     table.string('name').notNull().unique()
     table.string('username').notNull().unique()
     table.string('password').notNull()
+    table.boolean("owner").notNull()
   })
-}
 
-exports.up = async function(knex) {
-  await knex.schema.createTable('items', (table) => {
-    table.increments('item_id')
-    table.string('item_name').notNull().unique()
-    table.string('description').notNull()
-    table.text('price').notNull()
-    table.text('location').notNull()
-
+  await knex.schema.createTable('owners_items', (table) => {
+    table.increments('id')
     table.integer('owners_id')
-      .notNull()
-      .references('owners_id')
-      .inTable('owners')
-      .onDelete('CASCADE')
-      .onUpdate('CASCADE')
-
-    table.integer('users_id')
-      .notNull()
-      .references('users_id')
+      .references('id')
       .inTable('users')
-      .onDelete('CASCADE')
-      .onUpdate('CASCADE')
-
-    table.primary(["owners_id", "users_id"])
+      .onDelete("CASCADE") 
+      .onUpdate("CASCADE")  
+    table.integer('item_id').notNull().unique()
+    table.integer('quantity').notNull()
+    table.text('description').notNull()
+    table.float('price').notNull()
+    table.string('location').notNull()
   })
+
+  await knex.schema.createTable('items', (table) => {
+    table.integer('id')
+      .references('id')
+      .inTable('owners_items')
+      .onDelete("CASCADE") 
+      .onUpdate("CASCADE")
+    table.string("item_name").unique().notNull()
+    table.integer("category_id")
+  })
+
+  await knex.schema.createTable('categories', (table) => {
+    table.integer('id')
+      .references('id')
+      .inTable('items')
+    table.string('category_name')
+  })    
 }
 
 exports.down = async function(knex) {
-  await knex.schema.dropTableIfExists('owners')
-  await knex.schema.dropTableIfExists('users')
+  await knex.schema.dropTableIfExists('categories')
   await knex.schema.dropTableIfExists('items')
+  await knex.schema.dropTableIfExists('owners_items')
+  await knex.schema.dropTableIfExists('users')
 };
-
-
-

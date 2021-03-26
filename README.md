@@ -1,143 +1,107 @@
-# How-To Backend API
+African Marketplace 
 
-## Dependencies
+Welcome to African Marketplace backend, to find endpoints and/or table schema, please use the model below.
+
+Dependencies
 express, knex, sqlite3, pg, nodemon, dotenv cross-env, cors
 bcryptjs, jsonwebtoken, jest, supertest
 
-# API Documentation
-
 Base url: 
-Routes marked with *(restricted)* require Authorizaton header set with JWT
+Restricted routes requiring a token are specified below.
+---------
+| Tables |
+----------
 
-## Endpoints
+Users
+----------------------------
+| data | type | required |
+-----------------------------
+| id | integer | yes |
+| name | string | yes |
+| username | string | yes |
+| password | string | yes |
+| owner | boolean | yes |
+------------------------------
 
-### **[GET] {baseURL}/**
-Base endpoint; Can be used to check if server is up
+Items
+------------------------------
+| data | type | required |
+-----------------------------
+| id | integer | yes |
+-------------------------------
+| item_name | string | yes |
+--------------------------------
+| category_id | string | yes |
+------------------------------
 
-Returns:
-```
-"Welcome to the Server"
-```
+Owners_items
+------------------------------
+| data | type | required |
+-----------------------------
+| id | integer | yes |
+------------------------------
+| owners_id | integer | yes |
+-------------------------------
+| item_id | integer | yes |
+------------------------------
+| quantity | integer | yes |
+-------------------------------
+| description | text | yes |
+--------------------------------
+| price | float | yes |
+--------------------------------
+| location | string | yes |
+------------------------------
 
-### **[POST] /api/auth/register**
-Registers a new user
+Categories
+------------------------------
+| data | type | required |
+-----------------------------
+| id | integer | yes |
+---------------------------------
+| category_name | string | yes |
+---------------------------------
 
-Accepts: 
+| Endpoints |
+--------------------
 
-    {
-        username,
-        password,
-    }
+Authentication Routes
+--------------------------------------------------------------------------------
+| Method | Endpoint | Token | Required |
+--------------------------------------------------------------------------------
+| POST | api/auth/register | no | registers a new user. 
+                                  required: name, username, password, owner
+                                  returns: id, username and password |
+---------------------------------------------------------------------------------
+| POST | api/auth/login | no |  Signs in user and returns a token.
+                                Required: username and password.
+                                Returns a token. |
+----------------------------------------------------------------------------------
 
-Returns:
+Users Routes
+--------------------------------------------------------------------
+| Method | Endpoint | Token | Required |
+--------------------------------------------------------------------
+| GET | /users | yes | returns all users |
+--------------------------------------------------------------------
+| GET | /users/:id | yes | returns user by id |
+--------------------------------------------------------------------
+| DELETE | /users/:id | yes | deletes an individual user |
+--------------------------------------------------------------------
 
-    {
-        username,
-        id
-    }
-
-### **[POST] /api/auth/login**
-Logs in a user
-
-Accepts:
-
-    {
-        username,
-        password
-    }
-
-
-Returns:
-
-    {
-        token: jwtToken,
-        message: "welcome ${username}",
-        id: userId
-    }
-
-### **[GET] /api/users/:userId** *(restricted)*
-
-Gets an array of how-tos for a user
-
-Returns:
-
-   [
-
-    {
-        id: howtoId,
-        title: howtoTitle,
-        description: howtoDescription
-    },
-
-   ]
-
-### **[GET] /api/users/:userId/howtos/:howtoID** *(restricted)*
-
-Gets a how-to by id for a user
-
-Returns:
-
-    {
-        id: howtoId,
-        title: howtoTitle,
-        description: howtoDescription,
-        steps: [{
-          stepId,
-          step_number,
-          step_description
-        }]
-    }
-
-### **[POST] /api/users/:userId** *(restricted)*
-
-Creates a new how-to for a user
-
-Accepts:
-
-    {
-      title,
-      description,
-      steps(array, optional)
-    }
-
-Returns:
-
-    {
-        id: howtoId,
-        title: howtoTitle,
-        description: howtoDescription,
-        steps: [{
-          stepId,
-          step_number,
-          step_description
-        }]
-    }
-
-### **[PUT] /api/users/:userId/howtos/:howtoID** *(restricted)*
-
-Updates a how-to by id (does not update steps)
-
-Accepts:
-
-    {
-      title: changes,
-      description: changes 
-    }
-
-Returns:
-
-    {
-        id: howtoId,
-        title: howtoTitle,
-        description: howtoDescription
-    }
-
-### **[DELETE] /api/users/:userId/howtos/:howtoID** *(restricted)*
-
-Deletes a how-to by id
-
-Returns:
-
-    {
-        message: "How-To has been deleted"
-    }
+Items Routes
+-----------------------------------------------------------------------
+| Method | Endpoint | Token | Required |
+-----------------------------------------------------------------------
+| GET | /items | yes | returns all items |
+------------------------------------------------------------------------
+| GET | /items/:id | yes | returns an item by id |
+---------------------------------------------------------------------------
+| GET | /items/:category | yes | returns all items in a category |
+----------------------------------------------------------------------------
+| POST | /items/addItem | yes | creates a new item to add to the database |
+----------------------------------------------------------------------------
+| PUT | /items/:id | yes | edits a single item by id |
+-----------------------------------------------------------------------------
+| DELETE | /items/:id | deletes a specific item by id |
+------------------------------------------------------------------------------

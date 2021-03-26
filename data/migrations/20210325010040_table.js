@@ -35,7 +35,7 @@ exports.up = async function(knex) {
     table.integer('id')
       .references('id')
       .inTable('items')
-    table.string('category_name')
+    table.string('category_name').notNull()
   })    
 }
 

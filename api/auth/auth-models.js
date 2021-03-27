@@ -1,8 +1,7 @@
-const db = require ('../../data/AfricanMarket.db3') // database location .db3
+const db = require ('../../data/dbConfig.js')
 
 function find() {
   return db("users as u")
-     
       .select("*")
 }
 

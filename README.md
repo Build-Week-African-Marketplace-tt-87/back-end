@@ -2,7 +2,7 @@ African Marketplace
 
 Welcome to African Marketplace backend, to find endpoints and/or table schema, please use the model below.
 
-Dependencies
+Dependencies:
 express, knex, sqlite3, pg, nodemon, dotenv cross-env, cors
 bcryptjs, jsonwebtoken, jest, supertest
 

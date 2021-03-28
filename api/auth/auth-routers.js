@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const Users = require('./auth-models')
 const router = express.Router()
+const { JWT_SECRET } = require("../secrets");
 
 router.post('/register', async (req, res, next) => {
     try {

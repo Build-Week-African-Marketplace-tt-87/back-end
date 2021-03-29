@@ -18,11 +18,6 @@ router.get('/items/:id', async (req, res, next) => {
 
 })
 
-//owners and users should be able to get an item by a specific category 
-router.get('/items/:category', async (req, res, next) => {
-
-})
-
 //owner should be able to create a new item
 router.post('/items/addItem', async (req, res, next) => {
 

@@ -1,10 +1,9 @@
 const jwt = require("jsonwebtoken")
 const { JWT_SECRET } = require("../secrets");
 
- function restrict() {return async (req, res, next) => {
+module.exports = async (req, res, next) => {
     try {
       const token = req.headers.authorization
-      // console.log(req.headers.authorization)
 
       if(!token) {
         return res.status(401).json({
@@ -12,7 +11,7 @@ const { JWT_SECRET } = require("../secrets");
         })
       }
 
-      jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+      jwt.verify(token, JWT_SECRET, (err, decoded) => {
         if(err) {
           return res.status(401).json({
             message: "invalid token"
@@ -20,16 +19,10 @@ const { JWT_SECRET } = require("../secrets");
         }
 
         req.token = decoded
+
+        next()
       })
-
-      next()
-
     } catch(err) {
       next(err)
     }
-  }
-}
-
-module.exports = {
-  restrict,
-}
+  };

@@ -27,29 +27,19 @@ Items Table
 |-------------|------------|-------------|
 | id          | integer    | yes         | 
 | item_name   | string     | yes         | 
-| category_id | string     | yes         |  
-
-
-Owners_items Table 
-
-| data        | type       | required    | 
-|-------------|------------|-------------|
-| id          | integer    | yes         | 
-| owners_id   | integer    | yes         | 
-| item_id     | integer    | yes         | 
 | quantity    | integer    | yes         | 
 | description | text       | yes         | 
 | price       | float      | yes         | 
-| location    | string     | yes         |  
+| location    | string     | yes         | 
 
 
+User_items Table 
 
-Categories
+| data        | type       | required    | 
+|-------------|------------|-------------|
+| user_id     | integer    | yes         | 
+| item_id     | integer    | yes         | 
 
-| data          | type         | required    | 
-|---------------|--------------|-------------|
-| id            | integer      | yes         | 
-| category_name | string       | yes         | 
 
 
 Endpoints
@@ -78,8 +68,7 @@ Items Routes
 | Method | Endpoint         | Token | Required                        |   
 |--------|------------------|-------|---------------------------------|
 | GET    | /items           | yes   | returns all items               |   
-| GET    | /items/:id       | yes   | returns an item by id           |   
-| GET    | /items/:category | yes   | returns all items in a category |   
+| GET    | /items/:id       | yes   | returns an item by id           |      
 | POST   | /items/addItem   | yes   | creates new item in database    |   
 | PUT    | /items/:id       | yes   | edits a single item by id       |   
 | GET    | /items/:id       | yes   | deletes a specific item by id   |   

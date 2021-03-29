@@ -3,19 +3,18 @@ const db = require("../../data/dbConfig")
 module.exports = {
   findItems,
   findItemsById,
-  findItemsByCategory,
   addItems,
   updateItemsById,
   deleteItems
 }
 
-function findItems(){
+function findItems() {
   // SELECT *
   // FROM items;
   return db("items")
 }
 
-function findItemsById(id){
+function findItemsById(id) {
   // SELECT *
   // FROM items
   // WHERE id = ?;

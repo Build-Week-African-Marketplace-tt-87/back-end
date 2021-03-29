@@ -20,7 +20,12 @@ router.get('/items/:id', async (req, res, next) => {
 
 //owner should be able to create a new item
 router.post('/items/addItem', async (req, res, next) => {
-
+  try {
+		const item = await market.addItems(req.body)
+		res.status(201).json(market)
+	} catch(err) {
+		next(err)
+	}
 })
 
 //owner should be able to edit/update an existing item 

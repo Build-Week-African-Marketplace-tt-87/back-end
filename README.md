@@ -71,5 +71,5 @@ Items Routes
 | GET    | /items/:id       | yes   | returns an item by id           |      
 | POST   | /items/addItem   | yes   | creates new item in database    |   
 | PUT    | /items/:id       | yes   | edits a single item by id       |   
-| GET    | /items/:id       | yes   | deletes a specific item by id   |   
+| DELETE | /items/:id       | yes   | deletes a specific item by id   |   
 

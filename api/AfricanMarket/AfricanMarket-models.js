@@ -26,23 +26,24 @@ function findItemsById(id) {
 async function addItems(item, id) {
   // INSERT INTO items (item_name, quantity, description, price, location)
   // VALUES ('TEST', 3, 'testing a description', 5.44, 'Kenya');
-  owners_item.owners_id = id
-  return db("items").insert(item, "id");
+  return db("items")
+    .insert(item, "id");
 }
 
 async function updateItemsById(id, changes) {
   // UPDATE items
   // SET item_name = 'UPDATED TEST', quantity = 22, description = 'UPDATED testing a description', price = 5.45, location = 'Uganda'
   // WHERE id = ?;
-  return db("owners_items")
+  return db("items")
     .update(changes)
+    .set({ item_name, quantity, description, price, location })
     .where({ id })
 }
 
 async function deleteItems(id) {
   // DELETE FROM items 
   // WHERE id = 3;
-  return db("owners_items")
+  return db("items")
     .where({ id })
     .del()
 }

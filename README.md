@@ -1,16 +1,17 @@
-African Marketplace 
+## African Marketplace 
 
 Welcome to African Marketplace backend, to find endpoints and/or table schema, please use the model below.
 
-Dependencies:
+## Dependencies:
 express, knex, sqlite3, pg, nodemon, dotenv cross-env, cors
 bcryptjs, jsonwebtoken, jest, supertest
 
-Base url: 
+## Base url: https://african-marketplace-bwtt87.herokuapp.com
+
 Restricted routes requiring a token are specified below.
 
 
-Users Table
+## Users Table
 
 | data     | type    | required | 
 |----------|---------|----------|
@@ -21,7 +22,7 @@ Users Table
 | owner    | boolean | yes      |
 
 
-Items Table
+## Items Table
 
 | data        | type       | required    | 
 |-------------|------------|-------------|
@@ -33,7 +34,7 @@ Items Table
 | location    | string     | yes         | 
 
 
-User_items Table 
+## User_items Table 
 
 | data        | type       | required    | 
 |-------------|------------|-------------|
@@ -42,9 +43,9 @@ User_items Table
 
 
 
-Endpoints
+## Endpoints
 
-Authentication Routes
+## Authentication Routes
 
 
 | Method | Endpoint          | Token | Required                                                                                            |   
@@ -54,7 +55,7 @@ Authentication Routes
 
 
 
-Users Routes
+## Users Routes
 
 | Method | Endpoint   | Token | Required                   |  
 |--------|------------|-------|----------------------------|
@@ -63,7 +64,7 @@ Users Routes
 | DELETE | /users/:id | yes   | deletes an individual user |  
 
 
-Items Routes
+## Items Routes
 
 | Method | Endpoint         | Token | Required                        |   
 |--------|------------------|-------|---------------------------------|

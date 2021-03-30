@@ -3,4 +3,4 @@ node_modules/
 jspm_packages/
 
 # dot env
-.envnode_modules
+.env

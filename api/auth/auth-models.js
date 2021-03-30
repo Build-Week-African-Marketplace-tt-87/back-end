@@ -1,25 +1,25 @@
-const db = require ('../../data/dbConfig.js')
+const db = require('../../data/dbConfig.js')
 
 function find() {
   return db("users")
-      .select("*")
+    .select("*")
 }
 
 function findById(id) {
   return db('users')
-      .where({ id })
-      .first()
+    .where({ id })
+    .first()
 }
 
 function findBy(username) {
   return db('users')
-      .where({ username })
-      .first()
+    .where({ username })
+    .first()
 }
 
 async function add(newUser) {
   const [id] = await db('users')
-      .insert(newUser)
+    .insert(newUser).returning("id")
   return findById(id)
 }
 

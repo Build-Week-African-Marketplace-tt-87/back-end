@@ -2,6 +2,10 @@
 require('dotenv').config()
 const pg = require('pg')
 
+if (process.env.DATABASE_URL) {
+  pg.defaults.ssl = { rejectUnauthorized: false }
+}
+
 module.exports = {
 
   development: {
@@ -25,7 +29,7 @@ module.exports = {
       directory: "./data/migrations"
     },
     pool: {
-      min: 2, 
+      min: 2,
       max: 10
     },
     seeds: {

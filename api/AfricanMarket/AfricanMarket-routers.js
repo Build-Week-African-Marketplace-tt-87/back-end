@@ -14,10 +14,11 @@ router.get('/items', async (req, res, next) => {
   }
 })
 
+//working
 //owners and users should be able to get an item by id
 router.get('/items/:id', async (req, res, next) => {
   try {
-    const itemId = await market.findItemsById(req.params.item_id)
+    const itemId = await market.findItemsById(req.params.id)
     res.status(200).json(itemId)
   } catch (err) {
     next(err)
@@ -38,17 +39,20 @@ router.post('/items/addItem', async (req, res, next) => {
 router.put('/items/:id', async (req, res, next) => {
   try {
     const editItem = await market.updateItemsById(req.params.id, req.body)
-    res.status(201).json(editItem)
+    res.status(200).json(editItem)
   } catch (err) {
     next(err)
   }
 })
 
+//works
 //owner should be able to delete an item
 router.delete('/items/:id', async (req, res, next) => {
   try {
     await market.deleteItems(req.params.id)
-    res.status(200).json()
+    res.status(200).json({
+      messgae: "Item was successfully deleted"
+    })
   } catch (err) {
     next(err)
   }

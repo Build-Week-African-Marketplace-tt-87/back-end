@@ -23,11 +23,17 @@ function findItemsById(id) {
     .first();
 }
 
-async function addItems(item, id) {
+async function addItems(item) {
   // INSERT INTO items (item_name, quantity, description, price, location)
   // VALUES ('TEST', 3, 'testing a description', 5.44, 'Kenya');
-  return db("items")
-    .insert(item, "id");
+  db("items")
+    .insert({
+      item_name: item.item_name,
+      quantity: item.quantity,
+      description: item.description,
+      price: item.price,
+      location: item.location
+    });
 }
 
 async function updateItemsById(id, changes) {

@@ -1,4 +1,10 @@
 // Update with your config settings.
+require('dotenv').config()
+const pg = require('pg')
+
+if (process.env.DATABASE_URL) {
+  pg.defaults.ssl = { rejectUnauthorized: false }
+}
 
 module.exports = {
 
@@ -7,28 +13,27 @@ module.exports = {
     useNullAsDefault: true,
     connection: {
       filename: './data/AfricanMarket.db3'
-    },  
-    migrations: { 
-      directory: "./data/migrations" 
     },
-    seeds: { 
-      directory: "./data/seeds" 
+    migrations: {
+      directory: "./data/migrations"
+    },
+    seeds: {
+      directory: "./data/seeds"
     },
   },
 
   production: {
-    client: 'sqlite3',
-    useNullAsDefault: true,
-    connection: {
-      // connectionString: pgConnection,
-      // ssl: { rejectUnauthorized: false },
-      filename: './data/dev.db3'
+    client: 'pg',
+    connection: process.env.DATABASE_URL,
+    migrations: {
+      directory: "./data/migrations"
     },
-    migrations: { 
-      directory: "./data/migrations" 
+    pool: {
+      min: 2,
+      max: 10
     },
-    seeds: { 
-      directory: "./data/seeds" 
+    seeds: {
+      directory: "./data/seeds"
     },
   },
 
@@ -38,11 +43,11 @@ module.exports = {
     connection: {
       filename: './data/test.db3'
     },
-    migrations: { 
-      directory: "./data/migrations" 
+    migrations: {
+      directory: "./data/migrations"
     },
-    seeds: { 
-      directory: "./data/seeds" 
+    seeds: {
+      directory: "./data/seeds"
     },
   },
 

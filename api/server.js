@@ -3,7 +3,7 @@ const cors = require("cors")
 const helmet = require('helmet')
 
 const authRouter = require('./auth/auth-routers')
-const africanMarketRouter = require('./africanMarket/africanMarket-routers')
+const africanMarketRouter = require('./AfricanMarket/AfricanMarket-routers')
 
 const server = express()
 

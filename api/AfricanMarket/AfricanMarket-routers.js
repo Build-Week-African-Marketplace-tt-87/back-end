@@ -2,6 +2,7 @@ const express = require('express')
 const jwt = require('jsonwebtoken')
 const market = require('./AfricanMarket-models')
 const router = express.Router()
+const { validItemId } = require("../middleware/market")
 
 //owners and users should be able to get a list of all items 
 router.get('/items', async (req, res, next) => {
@@ -34,7 +35,7 @@ router.post('/items/addItem', async (req, res, next) => {
 })
 
 //owner should be able to edit/update an existing item 
-router.put('/items/:id', async (req, res, next) => {
+router.put('/items/:id', validItemId, async (req, res, next) => {
   try {
     const editItem = await market.updateItemsById(req.params.id, req.body)
     res.status(200).json(editItem)

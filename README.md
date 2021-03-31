@@ -52,17 +52,7 @@ Restricted routes requiring a token are specified below.
 |--------|-------------------|-------|-----------------------------------------------------------------------------------------------------|
 | POST   | api/auth/register | no    | registers a new user. required: name, username, password, owner. returns: id, username and password |   
 | POST   | api/auth/login    | no    | Signs user in and returns a token. Required: username and password. Returns a token.                |   
-
-
-
-## Users Routes
-
-| Method | Endpoint   | Token | Required                   |  
-|--------|------------|-------|----------------------------|
-| GET    | /users     | yes   | returns all users          |   
-| GET    | /users/:id | yes   | returns user by id         |   
-| DELETE | /users/:id | yes   | deletes an individual user |  
-
+ 
 
 ## Items Routes
 

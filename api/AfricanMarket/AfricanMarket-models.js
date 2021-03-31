@@ -1,4 +1,4 @@
-const db = require("../../data/dbConfig")
+const db = require("../../data/dbConfig");
 
 module.exports = {
   findItems,
@@ -32,13 +32,14 @@ async function addItems(item) {
   return findItemsById(id)
 }
 
-function updateItemsById(id, changes) {
+async function updateItemsById(id, changes) {
   // UPDATE items
   // SET item_name = 'UPDATED TEST', quantity = 22, description = 'UPDATED testing a description', price = 5.45, location = 'Uganda'
   // WHERE id = ?;
-  return db("items")
+  await db("items")
     .where("id", id)
     .update(changes)
+  return findItemsById(id)
 }
 
 function deleteItems(id) {

@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const Users = require('./auth-models')
 const { JWT_SECRET } = require("../secrets");
+const { restrict } = require("../middleware/users")
 
 router.post('/register', async (req, res, next) => {
   try {
@@ -42,7 +43,7 @@ router.post('/register', async (req, res, next) => {
 })
 
 
-router.post('/login', async (req, res, next) => {
+router.post('/login', restrict, async (req, res, next) => {
   try {
     const { username, password } = req.body
 

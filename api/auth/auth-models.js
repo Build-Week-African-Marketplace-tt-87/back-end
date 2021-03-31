@@ -19,7 +19,8 @@ function findBy(username) {
 
 async function add(newUser) {
   const [id] = await db('users')
-    .insert(newUser).returning("id") //returning for postgres, need for any adding
+    .insert(newUser)
+    .returning("id") //returning for postgres, need for any adding
   return findById(id)
 }
 

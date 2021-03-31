@@ -19,34 +19,29 @@ function findItemsById(id) {
   // FROM items
   // WHERE id = ?;
   return db("items")
-    .where("id", id)
+    .where({ id })
     .first();
 }
 
 async function addItems(item) {
   // INSERT INTO items (item_name, quantity, description, price, location)
   // VALUES ('TEST', 3, 'testing a description', 5.44, 'Kenya');
-  db("items")
-    .insert({
-      item_name: item.item_name,
-      quantity: item.quantity,
-      description: item.description,
-      price: item.price,
-      location: item.location
-    });
+  const [id] = await db("items")
+    .insert(item)
+    .returning("id")
+  return findItemsById(id)
 }
 
-async function updateItemsById(id, changes) {
+function updateItemsById(id, changes) {
   // UPDATE items
   // SET item_name = 'UPDATED TEST', quantity = 22, description = 'UPDATED testing a description', price = 5.45, location = 'Uganda'
   // WHERE id = ?;
   return db("items")
+    .where("id", id)
     .update(changes)
-    .set({ item_name, quantity, description, price, location })
-    .where({ id })
 }
 
-async function deleteItems(id) {
+function deleteItems(id) {
   // DELETE FROM items 
   // WHERE id = 3;
   return db("items")

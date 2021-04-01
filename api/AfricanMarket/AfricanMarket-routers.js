@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const market = require('./AfricanMarket-models')
 const router = express.Router()
 const { validItemId } = require("../middleware/market")
+const { restrict } = require("../middleware/users")
 
 //owners and users should be able to get a list of all items 
 router.get('/items', restrict, async (req, res, next) => {

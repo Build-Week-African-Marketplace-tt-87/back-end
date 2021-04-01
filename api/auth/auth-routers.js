@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const Users = require('./auth-models')
 const { JWT_SECRET } = require("../secrets");
-// const generateToken = require("./gen-token.js");
 
 router.post('/register', async (req, res, next) => {
   try {

@@ -5,7 +5,7 @@ const router = express.Router()
 const { validItemId } = require("../middleware/market")
 
 //owners and users should be able to get a list of all items 
-router.get('/items', async (req, res, next) => {
+router.get('/items', restrict, async (req, res, next) => {
   try {
     const items = await market.findItems()
     res.status(200).json(items)
@@ -15,7 +15,7 @@ router.get('/items', async (req, res, next) => {
 })
 
 //owners and users should be able to get an item by id
-router.get('/items/:id', async (req, res, next) => {
+router.get('/items/:id', restrict, async (req, res, next) => {
   try {
     const itemId = await market.findItemsById(req.params.id)
     res.status(200).json(itemId)

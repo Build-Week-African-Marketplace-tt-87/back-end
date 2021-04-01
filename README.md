@@ -56,11 +56,11 @@ Restricted routes requiring a token are specified below.
 
 ## Items Routes
 
-| Method | Endpoint         | Token | Required                        |   
-|--------|------------------|-------|---------------------------------|
-| GET    | /items           | yes   | returns all items               |   
-| GET    | /items/:id       | yes   | returns an item by id           |      
-| POST   | /items/addItem   | yes   | creates new item in database    |   
-| PUT    | /items/:id       | yes   | edits a single item by id       |   
-| DELETE | /items/:id       | yes   | deletes a specific item by id   |   
+| Method | Endpoint                           | Token | Required                        |   
+|--------|------------------------------------|-------|---------------------------------|
+| GET    | api/AfricanMarket/items/           | yes   | returns all items               |   
+| GET    | api/AfricanMarket/items/:id        | yes   | returns an item by id           |      
+| POST   | api/AfricanMarket/items/addItem    | yes   | creates new item in database    |   
+| PUT    | api/AfricanMarket/items/:id        | yes   | edits a single item by id       |   
+| DELETE | api/AfricanMarket/items/:id        | yes   | deletes a specific item by id   |   
 

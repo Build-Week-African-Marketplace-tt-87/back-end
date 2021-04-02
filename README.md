@@ -13,6 +13,8 @@ Restricted routes requiring a token are specified below.
 
 ## Users Table
 
+Table Schema - https://dbdesigner.page.link/UZ5sMCn5QziAXAmV8
+
 | data     | type                       | required | 
 |----------|----------------------------|----------|
 | id       | integer                    | yes      |

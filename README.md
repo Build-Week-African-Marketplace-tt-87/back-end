@@ -13,13 +13,12 @@ Restricted routes requiring a token are specified below.
 
 ## Users Table
 
-| data     | type    | required | 
-|----------|---------|----------|
-| id       | integer | yes      | 
-| name     | string  | yes      | 
-| username | string  | yes      |  
-| password | string  | yes      |
-| owner    | boolean | yes      |
+| data     | type                       | required | 
+|----------|----------------------------|----------|
+| id       | integer                    | yes      |
+| username | string                     | yes      | 
+| password | string                     | yes      |
+| owner    | string ('true' or 'false') | yes      |
 
 
 ## Items Table
